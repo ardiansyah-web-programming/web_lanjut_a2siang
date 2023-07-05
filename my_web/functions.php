@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set("Asia/Jakarta");
+
 function koneksi()
 {
     $ip = "localhost";
@@ -12,4 +14,9 @@ function q($data)
 {
     $konek = koneksi();
     return mysqli_query($konek, $data);
+}
+
+function prodi()
+{
+    return q("SELECT * FROM prodi");
 }
