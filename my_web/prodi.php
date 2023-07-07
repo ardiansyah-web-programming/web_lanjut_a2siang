@@ -6,7 +6,7 @@ require "functions.php";
 
 <p id="berhasil"></p>
 
-<div class="row">
+<div class="row" id="tampil_edit_prodi">
     <div class="col-sm-6">
         <label for="">Nama Program Studi</label>
         <input type="text" class="form-control" id="nama_prodi">
@@ -39,7 +39,7 @@ require "functions.php";
                     <td><?= $p["simpan"]; ?></td>
                     <td><?= $p["edit"]; ?></td>
                     <td>
-                        <button class="btn btn-success btn-sm">Edit</button>
+                        <button class="btn btn-success btn-sm edit-prodi" id_prodi="<?= $p["id"]; ?>">Edit</button>
                         <button class="btn btn-danger btn-sm hapus-prodi" id_prodi="<?= $p["id"]; ?>">Hapus</button>
                     </td>
                 </tr>
@@ -49,6 +49,19 @@ require "functions.php";
 </div>
 
 <script>
+    $(".edit-prodi").click(function() {
+        var id_prodi = $(this).attr("id_prodi")
+        $.ajax({
+            type: "POST",
+            url: "view/tampil_edit_prodi.php",
+            //Ini diambil dari variabel id_prodi
+            data: "id_prodi=" + id_prodi,
+            success: function(data) {
+                $("#tampil_edit_prodi").html(data)
+            }
+        })
+    })
+
     $(".hapus-prodi").click(function() {
         var id_prodi = $(this).attr("id_prodi")
         var jawab = confirm("Yakin anda ingin menghapus data tersebut?");
