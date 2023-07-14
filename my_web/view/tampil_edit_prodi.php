@@ -22,7 +22,13 @@ $id_prodi = $_POST["id_prodi"];
       url: "controllers/simpan_edit_prodi.php",
       data: "nama_prodi=" + nama_prodi + "&id_prodi=" + id_prodi,
       success: function(data) {
-        console.log(data)
+        // console.log(data)
+        if (data == "gagal") {
+          alert("Nama prodi sudah ada sebelumnya!")
+        } else if (data == "berhasil") {
+          alert("Prodi berhasil diedit!")
+          $("#halaman_body").load("prodi.php")
+        }
       }
     })
   })
