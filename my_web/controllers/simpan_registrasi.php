@@ -26,11 +26,12 @@ if (!in_array($ekstensi_gambar, $daftar_gambar)) {
   $pw_encrypt = password_hash($pw1, PASSWORD_DEFAULT);
   $tanggal_hari_ini = date("Y-m-d H:i:s");
 
-  $ImageExt       = substr($ImageName, strrpos($ImageName, '.'));
-  $ImageExt       = str_replace('.', '', $ImageExt); // Extension
-  $ImageName      = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
+  // $ImageExt       = substr($ImageName, strrpos($ImageName, '.'));
+  // $ImageExt       = str_replace('.', '', $ImageExt); // Extension
+  // $ImageName      = preg_replace("/\.[^.\s]{3,4}$/", "", $ImageName);
   $g = uniqid();
-  $NewImageName   = str_replace(' ', '', $g . '.' . $ImageExt);
+  // $NewImageName   = str_replace(' ', '', $g . '.' . $ImageExt);
+  $NewImageName = $g . '.' . $ekstensi_gambar;
 
   $simpan_user = mysqli_query(
     $koneksi,

@@ -30,3 +30,16 @@ function prodi_satu($id_prodi, $isi_tabel)
     );
     return $x[$isi_tabel];
 }
+
+function user()
+{
+    return q("SELECT * FROM user ORDER BY updated DESC");
+}
+
+function user_img($id_user)
+{
+    $a = mysqli_fetch_assoc(
+        q("SELECT * FROM user_img WHERE id_user = '$id_user'")
+    );
+    return $a["gambar"];
+}

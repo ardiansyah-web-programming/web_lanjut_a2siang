@@ -1,3 +1,4 @@
+<?php require "../functions.php"; ?>
 <h1>Halaman Registrasi</h1>
 
 <div class="form-group">
@@ -26,6 +27,31 @@
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info mt-4" id="simpan_registrasi">Simpan</button>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="table table-responsive">
+      <table class="table table-sm table-dark table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Username</th>
+            <th>Nama Lengkap</th>
+            <th>Gambar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no = 1;
+          foreach (user() as $u) : ?>
+            <tr>
+              <td><?= $no++; ?></td>
+              <td><?= $u["username"]; ?></td>
+              <td><?= $u["nama_lengkap"]; ?></td>
+              <td><img src="img/<?= user_img($u["id"]); ?>" class="rounded mx-auto d-block" alt="" style="width: 100px;"></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
