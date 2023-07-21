@@ -1,6 +1,8 @@
 <?php
 date_default_timezone_set("Asia/Jakarta");
 
+$koneksi = mysqli_connect("localhost", "root", "", "web_lanjut_a2");
+
 function koneksi()
 {
     $ip = "localhost";
